@@ -18,7 +18,7 @@ MonoBehaviour:
     _windowObject: {fileID: 0}
   - _windowType: 1
     _formType: 0
-    _windowObject: {fileID: 0}
+    _windowObject: {fileID: 7207927162296573473, guid: 417f58c5e633790459f45c603dcdad3e, type: 3}
   _formModels:
   - _formType: 0
-    _formObject: {fileID: 0}
+    _formObject: {fileID: 9136412389546364882, guid: 70263cb6463680d4f930f71fe138c037, type: 3}

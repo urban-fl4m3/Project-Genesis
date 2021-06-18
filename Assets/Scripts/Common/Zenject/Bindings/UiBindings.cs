@@ -10,7 +10,8 @@ namespace Common.Zenject.Bindings
             container
                 .Bind<IViewProvider>()
                 .To<ViewProvider>()
-                .FromScriptableObjectResource($"Data/UI/{nameof(ViewProvider)}");
+                .FromScriptableObjectResource($"Data/UI/{nameof(ViewProvider)}")
+                .AsSingle();
         }
     }
 }

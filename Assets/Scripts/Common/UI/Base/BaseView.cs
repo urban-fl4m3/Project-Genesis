@@ -2,16 +2,36 @@ using UnityEngine;
 
 namespace Common.UI.Base
 {
-    public class BaseView : MonoBehaviour
+    public class BaseView<TViewModel> : MonoBehaviour where TViewModel : IViewModel
     {
-        public virtual void Show()
+        protected TViewModel Model { get; private set; }
+
+        public void Activate(TViewModel model)
         {
-            gameObject.SetActive(true);
+            Model = model;
+            OnActivate();
         }
 
-        public virtual void Hide()
+        public void Deactivate()
+        {
+            OnDeactivate();
+        }
+        
+        public void Show()
+        {
+            gameObject.SetActive(true);
+            OnShow();
+        }
+
+        public void Hide()
         {
             gameObject.SetActive(false);
+            OnHide();
         }
+
+        protected virtual void OnActivate() { }
+        protected virtual void OnDeactivate() { }
+        protected virtual void OnShow() { }
+        protected virtual void OnHide() { }
     }
 }
