@@ -8,6 +8,7 @@ namespace Common.Zenject.Installers
         public override void InstallBindings()
         {
             StartingCommandsBindings.Bind(Container);
+            UiBindings.Bind(Container);
             LogBindings.Bind(Container);
         }
     }
