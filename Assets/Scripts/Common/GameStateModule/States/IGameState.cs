@@ -1,6 +1,6 @@
 using Common.GameStateModule.Enums;
 
-namespace Common.GameStateModule.States.Base
+namespace Common.GameStateModule.States
 {
     public interface IGameState
     {

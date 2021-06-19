@@ -1,6 +1,7 @@
 using Common.GameStateModule;
 using Common.GameStateModule.States;
-using Common.GameStateModule.States.Base;
+using Common.GameStateModule.States.Battle;
+using Common.GameStateModule.States.Menu;
 using Zenject;
 
 namespace Common.Zenject.Bindings

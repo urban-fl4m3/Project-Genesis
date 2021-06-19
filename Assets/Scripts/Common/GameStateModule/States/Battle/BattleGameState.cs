@@ -1,6 +1,5 @@
 using System;
 using Common.GameStateModule.Enums;
-using Common.GameStateModule.States.Base;
 using Common.Generics;
 using Common.Logger;
 using Common.UI.Base;
@@ -9,7 +8,7 @@ using Common.UI.Enums;
 using Common.UI.Views.BattleHud;
 using Object = UnityEngine.Object;
 
-namespace Common.GameStateModule.States
+namespace Common.GameStateModule.States.Battle
 {
     public class BattleGameState : IGameState
     {

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Common.GameStateModule.Enums;
-using Common.GameStateModule.States.Base;
+using Common.GameStateModule.States;
 using Common.GameStateModule.States.Exceptions;
 
 namespace Common.GameStateModule
