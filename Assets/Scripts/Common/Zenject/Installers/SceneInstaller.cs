@@ -1,3 +1,6 @@
+using System;
+using Common.GameStateModule;
+using Common.GameStateModule.Enums;
 using Common.InstallationModule;
 using Zenject;
 
@@ -16,7 +19,14 @@ namespace Common.Zenject.Installers
         public override void Start()
         {
             var gameBootstrap = Container.Resolve<IGameBootstrap>();
+            gameBootstrap.RunCompleted += GameBootstrapOnRunCompleted;
             gameBootstrap.Run();
+        }
+
+        private void GameBootstrapOnRunCompleted(object sender, EventArgs e)
+        {
+            var gameStateMachine = Container.Resolve<IGameStateMachine>();
+            gameStateMachine.SetState(GameStateId.Battle);
         }
     }
 }

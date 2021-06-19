@@ -1,4 +1,6 @@
 using Common.GameStateModule;
+using Common.GameStateModule.States;
+using Common.GameStateModule.States.Base;
 using Zenject;
 
 namespace Common.Zenject.Bindings
@@ -11,6 +13,9 @@ namespace Common.Zenject.Bindings
                 .Bind<IGameStateMachine>()
                 .To<GameStateMachine>()
                 .AsSingle();
+
+            container.Bind<IGameState>().To<MenuGameState>().AsTransient();
+            container.Bind<IGameState>().To<BattleGameState>().AsTransient();
         }
     }
 }
