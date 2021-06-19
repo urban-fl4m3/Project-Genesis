@@ -7,6 +7,7 @@ namespace Common.Zenject.Installers
     {
         public override void InstallBindings()
         {
+            SyncThreadBindings.Bind(Container);
             InitializeCommandsBindings.Bind(Container);
             GameStateBindings.Bind(Container);
             StartingCommandsBindings.Bind(Container);

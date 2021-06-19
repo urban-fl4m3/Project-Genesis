@@ -1,6 +1,6 @@
 namespace Common.GameStateModule.Enums
 {
-    public enum GameStateId
+    public enum ApplicationState
     {
         Unknown = 0,
         Menu = 1,

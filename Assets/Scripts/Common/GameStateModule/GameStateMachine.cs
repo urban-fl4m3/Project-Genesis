@@ -8,35 +8,35 @@ namespace Common.GameStateModule
 {
     public class GameStateMachine : IGameStateMachine
     {
-        private readonly Dictionary<GameStateId, IGameState> _states;
+        private readonly Dictionary<ApplicationState, IConcreteState<ApplicationState>> _states;
         
-        private GameStateId _currentStateId = GameStateId.Unknown;
-        private IGameState _currentState;
+        private ApplicationState _applicationState = ApplicationState.Unknown;
+        private IConcreteState<ApplicationState> _currentConcreteState;
         
-        public GameStateMachine(IEnumerable<IGameState> gameStates)
+        public GameStateMachine(IEnumerable<IConcreteState<ApplicationState>> gameStates)
         {
-            _states = gameStates.ToDictionary(x => x.StateId, x => x);
+            _states = gameStates.ToDictionary(x => x.State, x => x);
         }
 
-        public void SetState(GameStateId stateId)
+        public void SetState(ApplicationState state)
         {
-            if (stateId == _currentStateId)
+            if (state == _applicationState)
             {
                 return;
             }
 
-            if (!_states.TryGetValue(stateId, out var gameState))
+            if (!_states.TryGetValue(state, out var gameState))
             {
-                throw new GameStateNullReference($"Game State Machine doesn't contain a {stateId} state");
+                throw new GameStateNullReference($"Game State Machine doesn't contain a {state} state");
             }
 
-            if (_currentState != null)
+            if (_currentConcreteState != null)
             {
-                _currentState.Exit();
+                _currentConcreteState.Exit();
             }
 
-            _currentState = gameState;
-            _currentState.Enter();
+            _currentConcreteState = gameState;
+            _currentConcreteState.Enter();
         }
     }
 }

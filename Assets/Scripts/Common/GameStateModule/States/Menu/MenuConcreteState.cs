@@ -2,11 +2,11 @@ using Common.GameStateModule.Enums;
 
 namespace Common.GameStateModule.States.Menu
 {
-    public class MenuGameState : IGameState
+    public class MenuConcreteState : IConcreteState<ApplicationState>
     {
-        public GameStateId StateId => GameStateId.Menu;
+        public ApplicationState State => ApplicationState.Menu;
 
-        public MenuGameState()
+        public MenuConcreteState()
         {
             
         }

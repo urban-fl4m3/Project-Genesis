@@ -26,7 +26,7 @@ namespace Common.Zenject.Installers
         private void GameBootstrapOnRunCompleted(object sender, EventArgs e)
         {
             var gameStateMachine = Container.Resolve<IGameStateMachine>();
-            gameStateMachine.SetState(GameStateId.Battle);
+            gameStateMachine.SetState(ApplicationState.Battle);
         }
     }
 }

@@ -4,6 +4,6 @@ namespace Common.GameStateModule
 {
     public interface IGameStateMachine
     {
-        void SetState(GameStateId state);
+        void SetState(ApplicationState state);
     }
 }

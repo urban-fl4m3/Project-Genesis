@@ -8,6 +8,7 @@ namespace Common.Zenject.Bindings
         public static void Bind(DiContainer container)
         {
             container.Bind<LoggerInitializeCommand>().AsTransient();
+            container.Bind<SyncThreadInitializeCommand>().AsTransient();
         }
     }
 }
