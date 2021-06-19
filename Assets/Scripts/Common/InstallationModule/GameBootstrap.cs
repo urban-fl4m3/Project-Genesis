@@ -1,5 +1,8 @@
 using System;
+using Common.Commands;
 using Common.Generics;
+using Common.InstallationModule.InitializeCommands;
+using Common.UI.Base;
 using Common.UI.Configurations;
 using Common.UI.Enums;
 using Common.UI.Views.BattleHud;
@@ -10,30 +13,41 @@ namespace Common.InstallationModule
 {
     public class GameBootstrap : IGameBootstrap
     {
+        private readonly LoggerInitializeCommand _loggerInitializeCommand;
         private readonly ILogger _logger;
         private readonly IViewProvider _viewProvider;
 
-        public GameBootstrap(ILogger logger, IViewProvider viewProvider)
+        private readonly ICommandQueue _initializer = new CommandQueue();
+
+        public GameBootstrap(LoggerInitializeCommand loggerInitializeCommand)
         {
-            _logger = logger;
-            _viewProvider = viewProvider;
+            _loggerInitializeCommand = loggerInitializeCommand;
         }
         
         public void Run()
         {
-            _logger.Log("Installation Module", "Bootstrap start running...");
-            var windowInfrastructure = _viewProvider.GetWindowInfrastructure(Window.BattleHud);
-            var canvas = Object.Instantiate(windowInfrastructure.Item1);
-            var window = Object.Instantiate(windowInfrastructure.Item2, canvas.transform);
+            _initializer.Add(_loggerInitializeCommand);
             
-            var view = window.GetComponent<BattleHudView>();
-            var preparationTime = 60;
-            view.Activate(new BattleHudViewModel(
-                preparationTime,
-                new DynamicProperty<int>(1),
-                new DynamicProperty<int>(10)));
+            _initializer.OnComplete += InitializerOnOnComplete;
+            _initializer.ExecuteAll();
+            
+            // var windowInfrastructure = _viewProvider.GetWindowInfrastructure(Window.BattleHud);
+            // var canvas = Object.Instantiate(windowInfrastructure.Item1);
+            // var window = Object.Instantiate(windowInfrastructure.Item2, canvas.transform);
+            //
+            // var view = window.GetComponent<IView>();
+            // var preparationTime = 60;
+            // view.Activate(new BattleHudViewModel(
+            //     preparationTime,
+            //     new DynamicProperty<int>(1),
+            //     new DynamicProperty<int>(10)));
 
             // var timeSpan = TimeSpan.FromSeconds(preparationTime);
+        }
+
+        private void InitializerOnOnComplete(object sender, EventArgs e)
+        {
+            
         }
     }
 }

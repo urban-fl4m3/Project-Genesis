@@ -2,13 +2,14 @@ using UnityEngine;
 
 namespace Common.UI.Base
 {
-    public class BaseView<TViewModel> : MonoBehaviour where TViewModel : IViewModel
+    public class BaseView<TViewModel> : MonoBehaviour, IView
+        where TViewModel : IViewModel
     {
         protected TViewModel Model { get; private set; }
 
-        public void Activate(TViewModel model)
+        public void Activate(IViewModel model)
         {
-            Model = model;
+            Model = (TViewModel)model;
             OnActivate();
         }
 

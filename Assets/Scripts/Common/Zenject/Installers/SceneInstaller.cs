@@ -1,6 +1,5 @@
 using Common.InstallationModule;
 using Zenject;
-using ILogger = Common.Logger.ILogger;
 
 namespace Common.Zenject.Installers
 {
