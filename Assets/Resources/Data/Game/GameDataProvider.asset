@@ -15,3 +15,5 @@ MonoBehaviour:
   _startingGold: 5
   _moneyMultiplier: 1
   _preparationTime: 60
+  _unitData:
+  - {fileID: 11400000, guid: 11c7cce4f29df3d458ea6f053dae2892, type: 2}
