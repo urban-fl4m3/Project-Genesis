@@ -1,4 +1,4 @@
-namespace Common.GameStateModule.States.Battle.Enums
+namespace Common.GameModule.Battle.Enums
 {
     public enum BattleMode
     {

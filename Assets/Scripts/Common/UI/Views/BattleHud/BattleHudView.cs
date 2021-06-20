@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Common.GameStateModule.States.Battle.Enums;
+using Common.GameModule.Battle.Enums;
 using Common.Generics;
 using Common.UI.Base;
 using TMPro;

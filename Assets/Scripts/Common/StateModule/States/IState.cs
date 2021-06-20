@@ -1,4 +1,4 @@
-namespace Common.GameStateModule.States
+namespace Common.StateModule.States
 {
     public interface IState
     {

@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
-using Common.GameStateModule.Enums;
-using Common.GameStateModule.States.Battle.Enums;
-using Common.GameStateModule.States.Battle.SubStates;
+using Common.GameModule.Battle.Enums;
+using Common.GameModule.Battle.SubStates;
+using Common.GameModule.Enums;
+using Common.GameStateModule.States;
 using Common.Generics;
 using Common.Logger;
+using Common.StateModule.States;
 using Common.SyncThreadModule;
 using Common.UI.Base;
 using Common.UI.Configurations;
@@ -12,7 +14,7 @@ using Common.UI.Enums;
 using Common.UI.Views.BattleHud;
 using Object = UnityEngine.Object;
 
-namespace Common.GameStateModule.States.Battle
+namespace Common.GameModule.Battle
 {
     public class GameConcreteState : IConcreteState<ApplicationState>
     {

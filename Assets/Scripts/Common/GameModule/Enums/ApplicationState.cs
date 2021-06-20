@@ -1,4 +1,4 @@
-namespace Common.GameStateModule.Enums
+namespace Common.GameModule.Enums
 {
     public enum ApplicationState
     {

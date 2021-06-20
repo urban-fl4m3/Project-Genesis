@@ -1,6 +1,6 @@
 using System;
 
-namespace Common.GameStateModule.States.Exceptions
+namespace Common.GameModule.Exceptions
 {
     public class GameStateNullReference : Exception
     {

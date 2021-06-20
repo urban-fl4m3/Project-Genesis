@@ -1,8 +1,10 @@
 using System.Collections;
+using Common.GameStateModule.States;
+using Common.StateModule.States;
 using Common.SyncThreadModule;
 using UnityEngine;
 
-namespace Common.GameStateModule.States.Battle.SubStates
+namespace Common.GameModule.Battle.SubStates
 {
     public class TimerSubsSate : IState
     {
@@ -13,9 +15,9 @@ namespace Common.GameStateModule.States.Battle.SubStates
         private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(1);
             
         private Coroutine _timer;
-        
 
-        public TimerSubsSate(GameConcreteState game, ISyncProcessor syncProcessor)
+
+        protected TimerSubsSate(GameConcreteState game, ISyncProcessor syncProcessor)
         {
             _game = game;
             _syncProcessor = syncProcessor;

@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
-using Common.GameStateModule.Enums;
-using Common.GameStateModule.States;
-using Common.GameStateModule.States.Exceptions;
+using Common.GameModule.Enums;
+using Common.GameModule.Exceptions;
+using Common.StateModule.States;
 
-namespace Common.GameStateModule
+namespace Common.StateModule
 {
     public class GameStateMachine : IGameStateMachine
     {

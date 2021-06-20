@@ -1,6 +1,6 @@
 using System;
 
-namespace Common.GameStateModule.States
+namespace Common.StateModule.States
 {
     public interface IConcreteState<out TState> : IState
         where TState : Enum

@@ -1,7 +1,8 @@
 using System;
+using Common.GameModule.Enums;
 using Common.GameStateModule;
-using Common.GameStateModule.Enums;
 using Common.InstallationModule;
+using Common.StateModule;
 using Zenject;
 
 namespace Common.Zenject.Installers

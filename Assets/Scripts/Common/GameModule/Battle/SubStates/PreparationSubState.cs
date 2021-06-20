@@ -1,7 +1,7 @@
-using Common.GameStateModule.States.Battle.Enums;
+using Common.GameModule.Battle.Enums;
 using Common.SyncThreadModule;
 
-namespace Common.GameStateModule.States.Battle.SubStates
+namespace Common.GameModule.Battle.SubStates
 {
     public class PreparationSubState : TimerSubsSate
     {

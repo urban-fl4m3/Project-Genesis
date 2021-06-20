@@ -1,4 +1,4 @@
-using Common.GameStateModule.States.Battle.Enums;
+using Common.GameModule.Battle.Enums;
 using Common.Generics;
 using Common.UI.Base;
 

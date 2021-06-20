@@ -1,6 +1,6 @@
-using Common.GameStateModule.Enums;
+using Common.GameModule.Enums;
 
-namespace Common.GameStateModule
+namespace Common.StateModule
 {
     public interface IGameStateMachine
     {
