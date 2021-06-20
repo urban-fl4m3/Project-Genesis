@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Common.UI.Base;
 using Common.UI.Enums;
 using Common.UI.Factories;
@@ -15,10 +16,19 @@ namespace Common.UI.Managers
             _viewFactory = viewFactory;
         }
 
-        public void AddView(Window type, IViewModel model)
+        public IView AddView(Window type, IViewModel model)
         {
-            var view = _viewFactory.Create(type);
-            view.Activate(model);
+            var view = _views.FirstOrDefault(instance => instance.Type == type);
+            view ??= _viewFactory.Create(type);
+            view.Activate(type, model);
+            _views.Add(view);
+
+            return view;
+        }
+
+        public IView GetView(Window type)
+        {
+            return _views.FirstOrDefault(x => x.Type == type);
         }
     }
 }

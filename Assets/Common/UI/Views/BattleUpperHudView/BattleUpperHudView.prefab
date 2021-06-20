@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 7207927162296573475}
   - component: {fileID: 7207927162296573477}
   m_Layer: 5
-  m_Name: BattleHudView
+  m_Name: BattleUpperHudView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

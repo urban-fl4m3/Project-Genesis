@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Common.GameModule.Battle.Enums;
@@ -8,9 +7,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Common.UI.Views.BattleHud
+namespace Common.UI.Views.BattleUpperHud
 {
-    public class BattleHudView : BaseView<BattleHudViewModel>
+    public class BattleUpperHudView : BaseView<BattleUpperHudViewModel>
     {
         [SerializeField] private TextMeshProUGUI _preparationTimeText;
         [SerializeField] private TextMeshProUGUI _roundNumberText;

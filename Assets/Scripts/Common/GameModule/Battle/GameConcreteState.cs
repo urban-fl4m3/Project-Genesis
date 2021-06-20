@@ -5,17 +5,21 @@ using Common.GameModule.Configs;
 using Common.GameModule.Enums;
 using Common.Generics;
 using Common.StateModule.States;
+using Common.StateModule.States.Abstract;
 using Common.SyncThreadModule;
+using Common.UI.Actions;
 using Common.UI.Enums;
 using Common.UI.Managers;
-using Common.UI.Views.BattleHud;
+using Common.UI.Views.BattleBottomHud;
+using Common.UI.Views.BattleShop;
+using Common.UI.Views.BattleUpperHud;
 
 namespace Common.GameModule.Battle
 {
-    public class GameConcreteState : IConcreteState<ApplicationState>
+    public class GameConcreteState : ViewState<ApplicationState>
     {
-        private readonly IViewManager _viewManager;
-        public ApplicationState State => ApplicationState.Battle;
+        public override ApplicationState State => ApplicationState.Battle;
+        
 
         public readonly DynamicProperty<int> PreparationTime = new DynamicProperty<int>();
         public readonly DynamicProperty<int> Round = new DynamicProperty<int>();
@@ -25,8 +29,8 @@ namespace Common.GameModule.Battle
         private readonly DynamicProperty<BattleMode> _currentBattleMode = new DynamicProperty<BattleMode>();
         
         public GameConcreteState(ISyncProcessor syncProcessor, IGameDataProvider gameDataProvider, IViewManager viewManager)
+         :base(viewManager)
         {
-            _viewManager = viewManager;
             _subStates = new Dictionary<BattleMode, IState>
             {
                 { BattleMode.Preparation, new PreparationSubState(this, syncProcessor, gameDataProvider) },
@@ -34,12 +38,34 @@ namespace Common.GameModule.Battle
             };
         }
         
-        public void Enter()
+        public override void Enter()
         {
-            var hudModel = new BattleHudViewModel(PreparationTime, Round, Coins, _currentBattleMode);
-
-            _viewManager.AddView(Window.BattleHud, hudModel);
+            base.Enter();
+            
+            AddView(Window.BattleUpperHud, new BattleUpperHudViewModel(PreparationTime, Round, Coins, _currentBattleMode));
+            AddView(Window.BattleBottomHud, new BattleBottomHudViewModel());
+            
             EnterState(BattleMode.Preparation);
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+            
+            ExitCurrentState();
+        }
+
+        protected override void OnBindAction(IActionBinder actionContainer)
+        {
+            actionContainer.Bind("open_shop", context =>
+            {
+                AddView(Window.BattleShop, new BattleShopViewModel());
+            });
+            
+            actionContainer.Bind("close_shop", context =>
+            {
+                CloseView(Window.BattleShop);
+            });
         }
 
         public void ChangeSubState(BattleMode state)
@@ -57,11 +83,6 @@ namespace Common.GameModule.Battle
         {
             _subStates[state].Enter();
             _currentBattleMode.Value = state;
-        }
-
-        public void Exit()
-        {
-            ExitCurrentState();
         }
     }
 }

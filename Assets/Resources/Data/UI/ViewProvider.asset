@@ -19,6 +19,12 @@ MonoBehaviour:
   - _windowType: 1
     _formType: 0
     _windowObject: {fileID: 7207927162296573473, guid: 417f58c5e633790459f45c603dcdad3e, type: 3}
+  - _windowType: 2
+    _formType: 0
+    _windowObject: {fileID: 2348458506966341367, guid: a86996d151b413b4a8f5f3054b52d3ea, type: 3}
+  - _windowType: 3
+    _formType: 0
+    _windowObject: {fileID: 1118272260762176295, guid: 6582a65f28d3498498e6e02e129d97a3, type: 3}
   _formModels:
   - _formType: 0
     _formObject: {fileID: 9136412389546364882, guid: 70263cb6463680d4f930f71fe138c037, type: 3}

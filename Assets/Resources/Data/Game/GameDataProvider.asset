@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startingGold: 5
   _moneyMultiplier: 1
-  _preparationTime: 1
+  _preparationTime: 60
