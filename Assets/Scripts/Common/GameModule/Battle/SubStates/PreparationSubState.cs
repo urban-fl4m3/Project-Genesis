@@ -16,7 +16,7 @@ namespace Common.GameModule.Battle.SubStates
 
         public override void Enter()
         {
-            _game.Coins.Value = _gameDataProvider.StartingGold + _game.Round.Value * _gameDataProvider.MoneyMultiplier;
+            _game.Coins.Value += _gameDataProvider.StartingGold + _game.Round.Value * _gameDataProvider.MoneyMultiplier;
             _game.Round.Value++;
             
             base.Enter();

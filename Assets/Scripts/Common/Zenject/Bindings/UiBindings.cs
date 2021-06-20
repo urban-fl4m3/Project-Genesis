@@ -1,4 +1,6 @@
 using Common.UI.Configurations;
+using Common.UI.Factories;
+using Common.UI.Managers;
 using Zenject;
 
 namespace Common.Zenject.Bindings
@@ -11,6 +13,16 @@ namespace Common.Zenject.Bindings
                 .Bind<IViewProvider>()
                 .To<ViewProvider>()
                 .FromScriptableObjectResource($"Data/UI/{nameof(ViewProvider)}")
+                .AsSingle();
+
+            container
+                .Bind<IVIewFactory>()
+                .To<ViewFactory>()
+                .AsSingle();
+
+            container
+                .Bind<IViewManager>()
+                .To<ViewManager>()
                 .AsSingle();
         }
     }

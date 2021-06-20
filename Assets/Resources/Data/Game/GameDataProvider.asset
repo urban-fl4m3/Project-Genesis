@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c47392e193984a73b381b4bc861ca452, type: 3}
   m_Name: GameDataProvider
   m_EditorClassIdentifier: 
-  _startingGold: 0
-  _moneyMultiplier: 0
-  _preparationTime: 0
+  _startingGold: 5
+  _moneyMultiplier: 1
+  _preparationTime: 1
