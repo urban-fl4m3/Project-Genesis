@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Common.ActorModule;
 using Common.GameModule.Battle.Units.Configs;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ namespace Common.GameModule.Configs
         [SerializeField] private int _moneyMultiplier;
         [SerializeField] private int _preparationTime;
         [SerializeField] private List<UnitDataProvider> _unitData;
+        [SerializeField] private Actor _battleField;
 
         public int StartingGold => _startingGold;
         public int MoneyMultiplier => _moneyMultiplier;
@@ -19,6 +21,11 @@ namespace Common.GameModule.Configs
         public IReadOnlyList<UnitDataProvider> GetUnitData()
         {
             return _unitData;
+        }
+
+        public Actor GetBattleField()
+        {
+            return _battleField;
         }
     }
 }

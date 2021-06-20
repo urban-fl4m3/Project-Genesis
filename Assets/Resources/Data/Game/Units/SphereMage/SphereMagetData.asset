@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SphereMagetData
   m_EditorClassIdentifier: 
   _name: Sphere-Mage
-  _unit: {fileID: 7806133382623431638, guid: 432fa149fbb4e7747bb9fc87197d4758, type: 3}
+  _actor: {fileID: 7154071828369136087, guid: 432fa149fbb4e7747bb9fc87197d4758, type: 3}
   _attributes: {fileID: 11400000, guid: 941ba6f8bc4f0b94fa15f36b157e440e, type: 2}

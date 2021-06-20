@@ -23,7 +23,7 @@ namespace Common.Generics
             get => _value;
             set
             {
-                if (!_value.Equals(value))
+                if (_value == null || !_value.Equals(value))
                 {
                     _value = value;
                     Changed?.Invoke(this, value);

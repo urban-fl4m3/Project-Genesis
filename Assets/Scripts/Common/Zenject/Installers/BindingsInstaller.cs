@@ -7,11 +7,12 @@ namespace Common.Zenject.Installers
     {
         public override void InstallBindings()
         {
+            TickBindings.Bind(Container);
             SyncThreadBindings.Bind(Container);
+            CameraBindings.Bind(Container);
             GameBindings.Bind(Container);
             InitializeCommandsBindings.Bind(Container);
             StateBindings.Bind(Container);
-            StartingCommandsBindings.Bind(Container);
             UiBindings.Bind(Container);
             LogBindings.Bind(Container);
         }

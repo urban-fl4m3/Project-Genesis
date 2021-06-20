@@ -9,6 +9,7 @@ namespace Common.Zenject.Bindings
         {
             container.Bind<LoggerInitializeCommand>().AsTransient();
             container.Bind<SyncThreadInitializeCommand>().AsTransient();
+            container.Bind<TickModuleInitializeCommand>().AsTransient();
         }
     }
 }

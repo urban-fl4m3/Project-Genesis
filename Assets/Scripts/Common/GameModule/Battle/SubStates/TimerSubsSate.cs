@@ -7,7 +7,7 @@ namespace Common.GameModule.Battle.SubStates
 {
     public class TimerSubsSate : IState
     {
-        protected readonly GameConcreteState _game;
+        protected readonly GameState _game;
         
         private readonly ISyncProcessor _syncProcessor;
         private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(1);
@@ -15,21 +15,33 @@ namespace Common.GameModule.Battle.SubStates
         private Coroutine _timer;
 
 
-        protected TimerSubsSate(GameConcreteState game, ISyncProcessor syncProcessor)
+        protected TimerSubsSate(GameState game, ISyncProcessor syncProcessor)
         {
             _game = game;
             _syncProcessor = syncProcessor;
         }
         
-        public virtual void Enter()
+        public void Enter()
         {
+            OnEnter();
             _game.PreparationTime.Value = GetDurationTime();
             _timer = _syncProcessor.StartSyncProcess(TimerRoutine());
         }
 
-        public virtual void Exit()
+        public void Exit()
         {
             StopTimer();
+            OnExit();
+        }
+
+        protected virtual void OnEnter()
+        {
+            
+        }
+
+        protected virtual void OnExit()
+        {
+            
         }
 
         protected virtual void OnTimerFinish()
@@ -42,7 +54,7 @@ namespace Common.GameModule.Battle.SubStates
             return 1;
         }
 
-        protected void StopTimer()
+        private void StopTimer()
         {
             if (_timer == null)
             {

@@ -17,7 +17,7 @@ namespace Common.Zenject.Bindings
                 .AsSingle();
 
             container.Bind<IConcreteState<ApplicationState>>().To<MenuConcreteState>().AsTransient();
-            container.Bind<IConcreteState<ApplicationState>>().To<GameConcreteState>().AsTransient();
+            container.Bind<IConcreteState<ApplicationState>>().To<GameState>().AsTransient();
         }
     }
 }

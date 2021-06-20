@@ -5,7 +5,7 @@ namespace Common.GameModule.Battle.SubStates
 {
     public class BattleSubState : TimerSubsSate
     {
-        public BattleSubState(GameConcreteState game, ISyncProcessor syncProcessor) : base(game, syncProcessor)
+        public BattleSubState(GameState game, ISyncProcessor syncProcessor) : base(game, syncProcessor)
         {
             
         }

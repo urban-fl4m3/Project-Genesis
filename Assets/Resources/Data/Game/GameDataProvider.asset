@@ -17,3 +17,4 @@ MonoBehaviour:
   _preparationTime: 60
   _unitData:
   - {fileID: 11400000, guid: 11c7cce4f29df3d458ea6f053dae2892, type: 2}
+  _battleField: {fileID: 9178177462251909116, guid: 3fc623885a9d12f4581826ae860e3add, type: 3}

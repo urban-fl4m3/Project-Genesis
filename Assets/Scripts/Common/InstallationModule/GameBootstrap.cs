@@ -10,20 +10,24 @@ namespace Common.InstallationModule
         
         private readonly LoggerInitializeCommand _loggerInitializeCommand;
         private readonly SyncThreadInitializeCommand _syncThreadInitializeCommand;
+        private readonly TickModuleInitializeCommand _tickModuleInitializeCommand;
 
         private readonly ICommandQueue _initializer = new CommandQueue();
 
         public GameBootstrap(LoggerInitializeCommand loggerInitializeCommand,
-            SyncThreadInitializeCommand syncThreadInitializeCommand)
+            SyncThreadInitializeCommand syncThreadInitializeCommand,
+            TickModuleInitializeCommand tickModuleInitializeCommand)
         {
             _loggerInitializeCommand = loggerInitializeCommand;
             _syncThreadInitializeCommand = syncThreadInitializeCommand;
+            _tickModuleInitializeCommand = tickModuleInitializeCommand;
         }
 
         public void Run()
         {
             _initializer.Add(_loggerInitializeCommand);
             _initializer.Add(_syncThreadInitializeCommand);
+            _initializer.Add(_tickModuleInitializeCommand);
             
             _initializer.OnComplete += InitializerOnOnComplete;
             _initializer.ExecuteAll();
