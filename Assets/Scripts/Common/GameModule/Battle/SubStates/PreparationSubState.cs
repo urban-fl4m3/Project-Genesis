@@ -45,7 +45,6 @@ namespace Common.GameModule.Battle.SubStates
                 sphereMage.Activate();
                 _selectedActor.Value = sphereMage;
             }
-
         }
 
         protected override void OnExit()
