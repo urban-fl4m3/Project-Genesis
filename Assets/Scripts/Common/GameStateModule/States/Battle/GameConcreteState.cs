@@ -43,8 +43,9 @@ namespace Common.GameStateModule.States.Battle
         {
             _logger.Log($"{nameof(GameConcreteState)}", "Entering state...");
             var hudModel = new BattleHudViewModel(PreparationTime, Round, Coins, _currentBattleMode);
-            
+
             CreateView(Window.BattleHud, hudModel);
+            Round.Value = 1;
             EnterState(BattleMode.Preparation);
         }
 

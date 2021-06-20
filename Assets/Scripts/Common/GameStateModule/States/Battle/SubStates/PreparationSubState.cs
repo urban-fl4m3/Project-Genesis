@@ -5,7 +5,7 @@ namespace Common.GameStateModule.States.Battle.SubStates
 {
     public class PreparationSubState : TimerSubsSate
     {
-        protected override int _duration => 10;
+        protected override int _duration => 60;
         
         public PreparationSubState(GameConcreteState game, ISyncProcessor syncProcessor) : base(game, syncProcessor)
         {
