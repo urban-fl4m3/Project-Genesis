@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Common.GameModule.Battle.Enums;
 using Common.GameModule.Battle.SubStates;
+using Common.GameModule.Configs;
 using Common.GameModule.Enums;
 using Common.GameStateModule.States;
 using Common.Generics;
@@ -29,14 +30,15 @@ namespace Common.GameModule.Battle
         private readonly IReadOnlyDictionary<BattleMode, IState> _subStates;
         private readonly DynamicProperty<BattleMode> _currentBattleMode = new DynamicProperty<BattleMode>();
         
-        public GameConcreteState(ILogger logger, ISyncProcessor syncProcessor, IViewProvider viewProvider)
+        public GameConcreteState(ILogger logger, ISyncProcessor syncProcessor, IViewProvider viewProvider,
+            IGameDataProvider gameDataProvider)
         {
             _logger = logger;
             _viewProvider = viewProvider;
 
             _subStates = new Dictionary<BattleMode, IState>
             {
-                { BattleMode.Preparation, new PreparationSubState(this, syncProcessor) },
+                { BattleMode.Preparation, new PreparationSubState(this, syncProcessor, gameDataProvider) },
                 { BattleMode.Battle, new BattleSubState(this, syncProcessor) }
             };
         }
@@ -47,7 +49,6 @@ namespace Common.GameModule.Battle
             var hudModel = new BattleHudViewModel(PreparationTime, Round, Coins, _currentBattleMode);
 
             CreateView(Window.BattleHud, hudModel);
-            Round.Value = 1;
             EnterState(BattleMode.Preparation);
         }
 

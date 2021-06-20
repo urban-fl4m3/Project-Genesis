@@ -5,8 +5,6 @@ namespace Common.GameModule.Battle.SubStates
 {
     public class BattleSubState : TimerSubsSate
     {
-        protected override int _duration => 5;
-        
         public BattleSubState(GameConcreteState game, ISyncProcessor syncProcessor) : base(game, syncProcessor)
         {
             
@@ -17,12 +15,9 @@ namespace Common.GameModule.Battle.SubStates
             _game.ChangeSubState(BattleMode.Preparation);
         }
 
-        public override void Exit()
+        protected override int GetDurationTime()
         {
-            base.Exit();
-            
-            _game.Coins.Value = 5 + _game.Round.Value;
-            _game.Round.Value++;
+            return 5;
         }
     }
 }

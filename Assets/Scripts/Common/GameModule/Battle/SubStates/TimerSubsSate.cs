@@ -1,5 +1,4 @@
 using System.Collections;
-using Common.GameStateModule.States;
 using Common.StateModule.States;
 using Common.SyncThreadModule;
 using UnityEngine;
@@ -8,7 +7,6 @@ namespace Common.GameModule.Battle.SubStates
 {
     public class TimerSubsSate : IState
     {
-        protected virtual int _duration => 1;
         protected readonly GameConcreteState _game;
         
         private readonly ISyncProcessor _syncProcessor;
@@ -22,9 +20,10 @@ namespace Common.GameModule.Battle.SubStates
             _game = game;
             _syncProcessor = syncProcessor;
         }
+        
         public virtual void Enter()
         {
-            _game.PreparationTime.Value = _duration;
+            _game.PreparationTime.Value = GetDurationTime();
             _timer = _syncProcessor.StartSyncProcess(TimerRoutine());
         }
 
@@ -36,6 +35,11 @@ namespace Common.GameModule.Battle.SubStates
         protected virtual void OnTimerFinish()
         {
             
+        }
+        
+        protected virtual int GetDurationTime()
+        {
+            return 1;
         }
 
         protected void StopTimer()
@@ -51,7 +55,7 @@ namespace Common.GameModule.Battle.SubStates
         
         private IEnumerator TimerRoutine()
         {
-            var estimatedTime = _duration;
+            var estimatedTime = GetDurationTime();
 
             while (estimatedTime > 0)
             {
